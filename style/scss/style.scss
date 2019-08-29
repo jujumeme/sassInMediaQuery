@@ -1,0 +1,11 @@
+// You may not @extend an outer selector from within @media.
+// You may only @extend selectors within the same directive.
+// %color-warning一定要在@media query裡面
+@media screen and (max-width: 992px) {
+   %color-warning {
+      color: red;
+   }
+   h1 {
+      @extend %color-warning;
+   }
+}
