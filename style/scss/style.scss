@@ -1,9 +1,20 @@
 // You may not @extend an outer selector from within @media.
 // You may only @extend selectors within the same directive.
 // %color-warning一定要在@media query裡面
+// 結論: @extend rwd時麻煩因為一定要寫在@media query裡面,但是mixin和function就不用。卡斯柏也不推薦用@extend;
+@function line($height: 40px) {
+   @return $height;
+}
+@mixin myFont($font-md: 14px) {
+   font-size: $font-md;
+}
 @media screen and (max-width: 992px) {
    %color-warning {
       color: red;
+   }
+   p {
+      @include myFont();
+      line-height: line();
    }
    h1 {
       @extend %color-warning;
